@@ -1,10 +1,12 @@
 package com.Bankcol.BankColApp.controller;
 
 import com.Bankcol.BankColApp.domain.Cliente;
+import com.Bankcol.BankColApp.dto.ClienteDTO;
 import com.Bankcol.BankColApp.repository.ClienteRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.Bankcol.BankColApp.service.ClienteService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,9 +14,11 @@ import java.util.List;
 @RequestMapping("/cliente")
 public class ClienteController {
     private final ClienteRepository clienteRepository;
+    private final ClienteService clienteService;
 
-    public ClienteController(ClienteRepository clienteRepository) {
+    public ClienteController(ClienteRepository clienteRepository, ClienteService clienteService) {
         this.clienteRepository = clienteRepository;
+        this.clienteService = clienteService;
     }
 
     @GetMapping("/validar")
@@ -27,4 +31,11 @@ public class ClienteController {
         List<Cliente> clientes = clienteRepository.findAll();
         return clientes;
     }
+
+    @PostMapping("/guardar")
+    public ResponseEntity<ClienteDTO> guardarCliente(@RequestBody ClienteDTO clienteDTO) throws Exception {
+        ClienteDTO clienteDTO1 = clienteService.guardarNuevoCliente(clienteDTO);
+        return new ResponseEntity<>(clienteDTO1, HttpStatus.OK);
+    }
+
 }

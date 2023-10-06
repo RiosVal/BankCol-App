@@ -1,10 +1,12 @@
 package com.Bankcol.BankColApp.controller;
 
 import com.Bankcol.BankColApp.domain.Sucursal;
+import com.Bankcol.BankColApp.dto.SucursalDTO;
 import com.Bankcol.BankColApp.repository.SucursalRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.Bankcol.BankColApp.service.SucursalService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,9 +14,11 @@ import java.util.List;
 @RequestMapping("/sucursal")
 public class SucursalController {
     private final SucursalRepository sucursalRepository;
+    private final SucursalService sucursalService;
 
-    public SucursalController(SucursalRepository sucursalRepository) {
+    public SucursalController(SucursalRepository sucursalRepository, SucursalService sucursalService) {
         this.sucursalRepository = sucursalRepository;
+        this.sucursalService = sucursalService;
     }
 
 
@@ -27,5 +31,11 @@ public class SucursalController {
     public List<Sucursal> obtenerTodos() {
         List<Sucursal> sucursals = sucursalRepository.findAll();
         return sucursals;
+    }
+
+    @PostMapping("/guardar")
+    public ResponseEntity<SucursalDTO> guardarSucursal(@RequestBody SucursalDTO sucursalDTO) throws Exception {
+        SucursalDTO sucursalDTO1 = sucursalService.guardarNuevaSucursal(sucursalDTO);
+        return new ResponseEntity<>(sucursalDTO1, HttpStatus.OK);
     }
 }
