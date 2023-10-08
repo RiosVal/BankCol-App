@@ -1,6 +1,7 @@
 .navContainer {
     font-family: 'Montserrat', sans-serif;
-    margin: 30px;
+    margin: 0 30px;
+    padding-top: 30px;
     height: fit-content;
     display: flex;
     gap: 20px;

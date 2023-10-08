@@ -1,8 +1,9 @@
-html {
-    background-color: #505d94; 
+.products {
+    height: 100vh;
+    /* background-color: #505d94; */
+    background-color: #131d44;
 }
 
-.products {
-    margin: 0;
-    height: 85vh;
+.pageContent {
+    display: flex;
 }
