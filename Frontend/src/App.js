@@ -1,16 +1,16 @@
 import './App.css';
 import Login from './components/login/Login';
-import Products from "./components/products-page/Products";
+import MainPage from "./components/main-page/MainPage";
 import Footer from './components/footer/Footer';
 
 function App() {
-  const isAuthenticaded = false;
+  const isAuthenticaded = true;
 
   return (
     <div>
       {
         isAuthenticaded ? (
-          <Products />
+          <MainPage />
         ) : (
           <Login />
         )
