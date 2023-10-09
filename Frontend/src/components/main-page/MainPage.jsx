@@ -41,21 +41,22 @@ function MainPage() {
     }
 
     return (
-        <div className="products">
-
-            <WelcomeName clientName={clientName}/>
-            <div className="pageContent">
-                <Menu
-                    isFirstClicked = {isFirstClicked}
-                    isSecondClicked = {isSecondClicked}
-                    isThirdClicked = {isThirdClicked}
-                    clickFirstHandler = {clickFirstHandler}
-                    clickSecondHandler = {clickSecondHandler}
-                    clickThirdHandler = {clickThirdHandler}
-                />
-                {isFirstClicked && <ProductsPage />}
-                {isSecondClicked && <h1>Tranferencias</h1>}
-                {isThirdClicked && <h1>Abrir cdts</h1>}
+        <div className="mainContainer">
+            <div className="products">
+                <WelcomeName clientName={clientName}/>
+                <div className="pageContent">
+                    <Menu
+                        isFirstClicked = {isFirstClicked}
+                        isSecondClicked = {isSecondClicked}
+                        isThirdClicked = {isThirdClicked}
+                        clickFirstHandler = {clickFirstHandler}
+                        clickSecondHandler = {clickSecondHandler}
+                        clickThirdHandler = {clickThirdHandler}
+                    />
+                    {isFirstClicked && <ProductsPage />}
+                    {isSecondClicked && <h1>Tranferencias</h1>}
+                    {isThirdClicked && <h1>Abrir cdts</h1>}
+                </div>
             </div>
         </div>
     );

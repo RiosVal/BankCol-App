@@ -15,6 +15,7 @@ function ProductsPage() {
                     />
                 );
             })}
+            <div className="nextArrow"><img src="/img/right-arrow-white.png" alt=""></img></div>
         </div>
     );
 }

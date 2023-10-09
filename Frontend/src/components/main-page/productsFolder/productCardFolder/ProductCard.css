@@ -1,7 +1,6 @@
 .productCard {
-    margin-top: 30px;
     font-family: 'Montserrat', sans-serif;
-    width: 400px;
+    width: 350px;
     height: 350px;
     background-color: white;
     border-radius: 20px;
@@ -45,4 +44,37 @@ button {
 
 button:hover {
     cursor: pointer;
+}
+
+@media (min-width: 1300px) {
+    .productCard {
+        height: 550px;
+    }
+
+    .img {
+        width: 80px;
+    }
+
+    .productName {
+        margin-top: 20px;
+        font-size: 30px;
+    }
+
+    .productId {
+        font-size: 18px;
+    }
+
+    .amountLabel {
+        margin-top: 50px;
+        font-size: 15px;
+    }
+
+    .productAmount {
+        font-size: 50px;
+    }
+
+    button {
+        margin-top: 50px;
+        font-size: 20px;
+    }
 }

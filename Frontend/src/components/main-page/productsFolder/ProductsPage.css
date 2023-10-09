@@ -1,4 +1,9 @@
 .productsPageContainer {
+    margin-top: 50px;
     display: flex;
     gap: 40px;
+}
+
+.nextArrow img {
+    cursor: pointer;
 }
