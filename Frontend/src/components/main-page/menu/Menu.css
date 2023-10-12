@@ -1,0 +1,34 @@
+.menuContainer {
+    margin: 50px 30px;
+    height: fit-content;
+    width: 200px;
+    border-radius: 20px;
+    background-color: #505d94;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menuContainer button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 20px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    width: 80%;
+}
+
+#firstButton {
+    margin-top: 20px;
+}
+
+.menuContainer button:hover {
+    cursor: pointer;
+}
