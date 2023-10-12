@@ -7,6 +7,8 @@ import com.Bankcol.BankColApp.repository.ClienteRepository;
 import com.Bankcol.BankColApp.service.ClienteService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
@@ -45,6 +47,13 @@ public class ClienteServiceImpl implements ClienteService {
         if (clienteDTO.getContra() == null || clienteDTO.getContra().trim().isEmpty()) {
             throw new Exception("Contraseñan vacía");
         }
+
+        //Validar que no exista un cliente con esa cédula
+        /*Optional<Cliente> clientePorCedula = clienteRepository.findClienteBy(clienteDTO.getCedula());
+
+        if (clientePorCedula.isPresent()){
+            throw new Exception("El cliente con la cédula " + clienteDTO.getCedula() + " ya se encuentra registrado");
+        }*/
 
         Cliente cliente = ClienteMapper.dtoToDomain(clienteDTO);
         cliente = clienteRepository.save(cliente);

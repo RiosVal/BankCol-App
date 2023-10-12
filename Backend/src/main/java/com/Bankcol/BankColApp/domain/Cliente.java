@@ -18,7 +18,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "cedula")
     private Integer cedula;
 
     @Column(nullable = false, length = 50)

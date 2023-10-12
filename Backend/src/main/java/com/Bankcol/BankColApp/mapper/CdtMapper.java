@@ -25,6 +25,12 @@ public class CdtMapper {
                 .tasa(cdt.getTasa())
                 .monto_invertido(cdt.getMonto_invertido())
                 .monto_final(cdt.getMonto_final())
+                .clienteId((cdt.getCliente() == null) ?
+                        null : cdt.getCliente().getId())
+                .sucursalId((cdt.getSucursal() == null) ?
+                        null : cdt.getSucursal().getId())
+                .estadoCdtId((cdt.getSucursal() == null) ?
+                        null : cdt.getEstadoCdt().getId())
                 .build();
     }
     public static List<Cdt> dtoToDomainList(List<CdtDTO> cdtDTOS) {
