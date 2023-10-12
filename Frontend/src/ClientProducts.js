@@ -11,4 +11,13 @@ const products = [
     }
 ]
 
+const cuentasFavoritas = [
+    {
+        "cedulaDestinatario": 780987,
+        "nombreDestintario": "John Mario",
+        "numCuentaDestinatario": 543654
+    }
+]
+
 export default products;
+export {cuentasFavoritas};

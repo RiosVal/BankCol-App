@@ -48,6 +48,7 @@ button:hover {
 
 @media (min-width: 1300px) {
     .productCard {
+        width: 350px;
         height: 550px;
     }
 

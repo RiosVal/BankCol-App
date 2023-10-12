@@ -1,4 +1,5 @@
 .productsPageContainer {
+    width: 950px;
     margin-top: 50px;
     display: flex;
     gap: 40px;
