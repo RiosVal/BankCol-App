@@ -1,0 +1,17 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #131d44;
+}
+
+
+.products {
+    height: 100vh;
+    /* background-color: #505d94; */
+    
+}
+
+.pageContent {
+    display: flex;
+}

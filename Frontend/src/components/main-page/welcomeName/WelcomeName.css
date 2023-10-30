@@ -1,0 +1,25 @@
+.navContainer {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 30px;
+    padding-top: 30px;
+    height: fit-content;
+    display: flex;
+    gap: 20px;
+}
+ 
+h1 {
+    font-size: 35px;
+    color: white;
+    margin: 0;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.menuIcon:hover {
+    cursor: pointer;
+}
+
+
