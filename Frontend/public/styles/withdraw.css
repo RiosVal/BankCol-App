@@ -1,0 +1,74 @@
+#withdraw {
+    display: flex;
+}
+
+#withdrawCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    background-color: white;
+    width: 700px;
+    min-height: 300px;
+    margin-top: 130px;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+#withdrawTitle {
+    width: 500px;
+    background-color: #505d94;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 10px;
+    border-radius: 12px;
+    margin: 0;
+}
+
+#inputGroupContainer {
+    margin-top: 30px;
+    display: flex;
+    gap: 40px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup label {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.inputGroup input, .inputGroup select {
+    height: 35px;
+    width: 300px;
+    font-size: 20px;
+    border: 1px solid #505d94;
+    border-radius: 5px;
+}
+
+#submitContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#submitContainer input {
+    background-color: #505d94;
+    border: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 35px;
+}
+
+#submitContainer input:hover {
+    cursor: pointer;
+    background-color: #131d44;
+}

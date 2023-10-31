@@ -54,9 +54,9 @@ public class CdtController {
     }
 
     //editar cdt
-    @GetMapping("/cdt/editar")
-    public Cdt editar(@PathVariable("id") Long id, Cdt cdt) {
-        Optional<Cdt> cdt1 = cdtRepository.findById(Math.toIntExact(id));
+    @PutMapping("/cdt/editar")
+    public Cdt editar(@RequestBody CdtDTO cdtDTO) {
+        Optional<Cdt> cdt1 = cdtRepository.findById(Math.toIntExact(cdtDTO.getId()));
         if (cdt1.isPresent()) {
             Cdt cdt2 = cdt1.get();
             cdt2.setFecha_inicio(cdt.getFecha_inicio());

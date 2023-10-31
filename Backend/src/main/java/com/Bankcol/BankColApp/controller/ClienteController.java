@@ -51,7 +51,7 @@ public class ClienteController {
 
 
     //Editar cliente
-    @GetMapping("/clientes/editar/{id}")
+    @PutMapping("/clientes/editar/{id}")
     public Cliente editar(@PathVariable("id") Long id, Cliente cliente){
         Optional<Cliente> cliente1 = clienteRepository.findById(Math.toIntExact(id));
         if(cliente1.isPresent()){
