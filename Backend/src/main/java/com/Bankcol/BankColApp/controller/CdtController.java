@@ -23,7 +23,7 @@ public class CdtController {
     }
 
     //Obtener todos los CDTS
-    @GetMapping(    "/obtenerTodos")
+    @GetMapping(    "/buscarTodos")
     public ResponseEntity<List<CdtDTO>> buscarTodos() {
         return new ResponseEntity<>(cdtService.buscarTodos(), HttpStatus.OK);
     }

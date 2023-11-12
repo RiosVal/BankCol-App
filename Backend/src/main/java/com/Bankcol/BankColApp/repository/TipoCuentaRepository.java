@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TipoCuentaRepository extends JpaRepository<TipoCuenta, Integer> {
+
+
+
 }

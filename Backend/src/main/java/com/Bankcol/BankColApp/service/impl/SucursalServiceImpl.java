@@ -32,8 +32,7 @@ public class SucursalServiceImpl implements SucursalService {
 
         Sucursal sucursal = SucursalMapper.dtoToDomain(sucursalDTO);
         sucursal = sucursalRepository.save(sucursal);
-        sucursalDTO = SucursalMapper.domainToDto(sucursal);
 
-        return sucursalDTO;
+        return SucursalMapper.domainToDto(sucursal);
     }
 }
