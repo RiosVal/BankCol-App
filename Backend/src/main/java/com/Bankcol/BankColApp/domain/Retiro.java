@@ -27,6 +27,6 @@ public class Retiro {
     private Double monto;
 
     @ManyToOne
-    @JoinColumn(name = "idcuena_cliente", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idcuenta_cliente", referencedColumnName = "id", nullable = false)
     private Cuenta cuenta;
 }

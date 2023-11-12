@@ -41,7 +41,7 @@ public class DestinatarioServiceImpl implements DestinatarioService {
 
         Destinatario destinatario = DestinatarioMapper.dtoToDomain(destinatarioDTO);
         destinatario = destinatarioRepository.save(destinatario);
-        destinatarioDTO = DestinatarioMapper.domainToDto(destinatario);
-        return destinatarioDTO;
+
+        return DestinatarioMapper.domainToDto(destinatario);
     }
 }
