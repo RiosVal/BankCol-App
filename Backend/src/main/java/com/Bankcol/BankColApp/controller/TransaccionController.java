@@ -24,6 +24,11 @@ public class TransaccionController {
         this.transaccionService = transaccionService;
     }
 
+    @GetMapping("/obtenerTodos")
+    public ResponseEntity<List<TransaccionDTO>> buscarTodos(){
+        return new ResponseEntity<>(transaccionService.buscarTodos(), HttpStatus.OK);
+    }
+
 
     @PostMapping("/guardar")
     public ResponseEntity<TransaccionDTO> guardarTransaccion(@RequestBody TransaccionDTO transaccionDTO) throws Exception {

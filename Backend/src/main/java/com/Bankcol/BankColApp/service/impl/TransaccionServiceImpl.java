@@ -3,19 +3,32 @@ package com.Bankcol.BankColApp.service.impl;
 import com.Bankcol.BankColApp.domain.Transaccion;
 import com.Bankcol.BankColApp.dto.TransaccionDTO;
 import com.Bankcol.BankColApp.mapper.TransaccionMapper;
+import com.Bankcol.BankColApp.repository.CuentaRepository;
+import com.Bankcol.BankColApp.repository.DestinatarioRepository;
 import com.Bankcol.BankColApp.repository.TransaccionRepository;
 import com.Bankcol.BankColApp.service.TransaccionService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TransaccionServiceImpl implements TransaccionService {
 
     private final TransaccionRepository transaccionRepository;
+    private final CuentaRepository cuentaRepository;
+    private final DestinatarioRepository destinatarioRepository;
 
-    public TransaccionServiceImpl(TransaccionRepository transaccionRepository) {
+    public TransaccionServiceImpl(TransaccionRepository transaccionRepository, CuentaRepository cuentaRepository, DestinatarioRepository destinatarioRepository) {
         this.transaccionRepository = transaccionRepository;
+        this.cuentaRepository = cuentaRepository;
+        this.destinatarioRepository = destinatarioRepository;
     }
 
+
+    @Override
+    public List<TransaccionDTO> buscarTodos() {
+        return TransaccionMapper.domainToDtoList(transaccionRepository.findAll());
+    }
 
     @Override
     public TransaccionDTO guardarNuevaTransaccion(TransaccionDTO transaccionDTO) throws Exception {

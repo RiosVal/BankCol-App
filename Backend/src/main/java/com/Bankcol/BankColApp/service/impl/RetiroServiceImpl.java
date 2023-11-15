@@ -3,17 +3,27 @@ package com.Bankcol.BankColApp.service.impl;
 import com.Bankcol.BankColApp.domain.Retiro;
 import com.Bankcol.BankColApp.dto.RetiroDTO;
 import com.Bankcol.BankColApp.mapper.RetiroMapper;
+import com.Bankcol.BankColApp.repository.CuentaRepository;
 import com.Bankcol.BankColApp.repository.RetiroRepository;
 import com.Bankcol.BankColApp.service.RetiroService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RetiroServiceImpl implements RetiroService {
 
     private final RetiroRepository retiroRepository;
+    private final CuentaRepository cuentaRepository;
 
-    public RetiroServiceImpl(RetiroRepository retiroRepository) {
+    public RetiroServiceImpl(RetiroRepository retiroRepository, CuentaRepository cuentaRepository) {
         this.retiroRepository = retiroRepository;
+        this.cuentaRepository = cuentaRepository;
+    }
+
+    @Override
+    public List<RetiroDTO> buscarTodos() {
+        return RetiroMapper.domainToDtoList(retiroRepository.findAll());
     }
 
     @Override

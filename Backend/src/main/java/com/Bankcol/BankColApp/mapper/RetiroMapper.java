@@ -19,6 +19,8 @@ public class RetiroMapper {
                 .id(retiro.getId())
                 .fecha(retiro.getFecha())
                 .monto(retiro.getMonto())
+                .cuentaId((retiro.getCuenta() == null) ?
+                        null : retiro.getCuenta().getId())
                 .build();
     }
     public static List<Retiro> dtoToDomainList(List<RetiroDTO> retiroDTOS) {

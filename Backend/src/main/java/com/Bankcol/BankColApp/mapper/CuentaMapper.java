@@ -19,6 +19,12 @@ public class CuentaMapper {
                 .id(cuenta.getId())
                 .numero_cuenta(cuenta.getNumero_cuenta())
                 .monto_disponible(cuenta.getMonto_disponible())
+                .tipoCuentaId((cuenta.getTipoCuenta() == null) ?
+                        null : cuenta.getTipoCuenta().getId())
+                .clienteId((cuenta.getCliente() == null) ?
+                        null : cuenta.getCliente().getId())
+                .sucursalId((cuenta.getSucursal() == null) ?
+                        null : cuenta.getSucursal().getId())
                 .build();
     }
     public static List<Cuenta> dtoToDomainList(List<CuentaDTO> cuentaDTOS) {

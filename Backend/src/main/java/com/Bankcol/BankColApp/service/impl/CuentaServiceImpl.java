@@ -4,7 +4,10 @@ package com.Bankcol.BankColApp.service.impl;
 import com.Bankcol.BankColApp.domain.Cuenta;
 import com.Bankcol.BankColApp.dto.CuentaDTO;
 import com.Bankcol.BankColApp.mapper.CuentaMapper;
+import com.Bankcol.BankColApp.repository.ClienteRepository;
 import com.Bankcol.BankColApp.repository.CuentaRepository;
+import com.Bankcol.BankColApp.repository.SucursalRepository;
+import com.Bankcol.BankColApp.repository.TipoCuentaRepository;
 import com.Bankcol.BankColApp.service.CuentaService;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,15 @@ import java.util.List;
 public class CuentaServiceImpl  implements CuentaService {
 
     private final CuentaRepository cuentaRepository;
+    private final TipoCuentaRepository tipoCuentaRepository;
+    private final ClienteRepository clienteRepository;
+    private final SucursalRepository sucursalRepository;
 
-    public CuentaServiceImpl(CuentaRepository cuentaRepository) {
+    public CuentaServiceImpl(CuentaRepository cuentaRepository, TipoCuentaRepository tipoCuentaRepository, ClienteRepository clienteRepository, SucursalRepository sucursalRepository) {
         this.cuentaRepository = cuentaRepository;
+        this.tipoCuentaRepository = tipoCuentaRepository;
+        this.clienteRepository = clienteRepository;
+        this.sucursalRepository = sucursalRepository;
     }
 
     public CuentaDTO guardarNuevaCuenta(CuentaDTO cuentaDTO) throws Exception {
@@ -50,6 +59,6 @@ public class CuentaServiceImpl  implements CuentaService {
 
     @Override
     public List<CuentaDTO> buscarTodos() {
-        return null;
+        return CuentaMapper.domainToDtoList(cuentaRepository.findAll());
     }
 }
