@@ -1,0 +1,21 @@
+<%- include("partials/head.ejs") %>
+<link rel="stylesheet" href="styles/login.css">
+<title>Ingresar</title>
+<body>
+    <div class="login-form">
+        <img src="images/logo-blue.png" alt="logo" class="logo"></img>
+        <form>
+            <div class="info-container">
+                <div class="input-box">
+                    <label>Usuario</label>
+                    <div class="input-container"><input type="text" name="username" placeholder="Ingresa tu usuario aquí"></input></div>
+                </div>
+                <div class="input-box">
+                    <label>Contraseña</label>
+                    <div class="input-container"><input type="password" name="password" placeholder="Ingresa tu contraseña aquí"></input></div>
+                </div>
+            </div>
+            <input class="button" type="submit" value="Ingresar">
+        </form>
+    </div>
+</body>

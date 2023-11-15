@@ -1,0 +1,69 @@
+<%- include("partials/head.ejs") %>
+<link rel="stylesheet" href="/styles/openCDT.css">
+<link rel="stylesheet" href="/styles/styles.css">
+<title>Abrir CDT</title>
+<body>
+    <section id="openCdt">
+        <%- include("partials/navbar.ejs") %>
+        
+        <div id="openModuleContainer">
+            <div id="simulation">
+                <h3>Simular</h3>
+                <form action="/simulateCdt" method="post">
+                    <div class="inputGroup">
+                        <label for="">Monto Inicial</label>
+                        <input name="simInitialAmount" type="number" min="100">
+                    </div>
+
+                    <div class="inputGroup">
+                        <label for="">Plazo</label>
+                        <select name="term" id="term">
+                            <option value="3">3 meses</option>
+                            <option value="6">6 meses</option>
+                            <option value="9">9 meses</option>
+                            <option value="12">1 año</option>
+                        </select>
+                    </div>
+
+                    <p>Porcentaje: <b>12%</b></p>
+
+                    <input class="saveInfo" type="submit" value="Simular">                    
+                </form>
+                <div id="simFinalAmount">$<%= finalAmountSimulation %></div>
+            </div>
+
+            <div id="sendOpenInfo">
+                <h3>Abrir CDT</h3>
+                <form action="/startCdt" method="post">
+                    <div class="inputGroup">
+                        <label for="">Monto Inicial</label>
+                        <input name="initialAmount" type="number" min="100">
+                    </div>
+
+                    <div class="inputGroup">
+                        <label for="">Plazo</label>
+                        <select name="cdtTerm" id="term">
+                            <option value="3">3 meses</option>
+                            <option value="6">6 meses</option>
+                            <option value="9">9 meses</option>
+                            <option value="12">1 año</option>
+                        </select>
+                    </div>
+
+                    <div class="inputGroup">
+                        <label for="">Sucursal</label>
+                        <select name="bankBrach" id="">
+                            <option value="Unicentro cali">Unicentro cali</option>
+                            <option value="Unicentro bogota">Unicentro bogota</option>
+                            <option value="Jardin plaza cali">Jardin plaza cali</option>
+                        </select>
+                    </div>
+
+                    <p>Porcentaje: <b>12%</b></p>
+
+                    <div id="saveCdtConatiner"><input class="saveInfo saveCdt" type="submit" value="Abrir CDT"></div>                    
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
