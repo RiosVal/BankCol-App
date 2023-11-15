@@ -27,8 +27,7 @@ public class EstadoCdtServiceImpl implements EstadoCdtService {
         }
         EstadoCdt estadoCdt = EstadoCdtMapper.dtoToDomain(estadoCdtDTO);
         estadoCdt = estadoCdtRepository.save(estadoCdt);
-        estadoCdtDTO = EstadoCdtMapper.domainToDto(estadoCdt);
 
-        return estadoCdtDTO;
+        return EstadoCdtMapper.domainToDto(estadoCdt);
     }
 }

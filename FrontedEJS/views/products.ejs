@@ -1,0 +1,23 @@
+<%- include("partials/head.ejs") %>
+<link rel="stylesheet" href="/styles/products.css">
+<title>Productos</title>
+<body>
+    <section id="productsPage">
+        <%- include("partials/navbar.ejs") %>
+
+        <div class="productsPageContainer">
+            <% data.products.forEach(product => { %>
+                <div class="productCard">
+                    <img src=<%= product.imgURL %>></img>
+                    <h1 class="productName"><%= product.type %></h1>
+                    <p class="productId"><%= product.id %></p>
+                    <p class="amountLabel">Monto</p>
+                    <p class="productAmount">$<%= product.amount %></p>
+                    <a id="seeDetailsURL" href="/products/<%= product.id %>">Ver detalles</a>
+                </div>
+            <% }) %>
+        </div>
+
+    </section>
+
+</body>

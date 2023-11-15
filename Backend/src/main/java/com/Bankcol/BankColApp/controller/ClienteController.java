@@ -1,6 +1,7 @@
 package com.Bankcol.BankColApp.controller;
 
 import com.Bankcol.BankColApp.domain.Cliente;
+import com.Bankcol.BankColApp.dto.CdtDTO;
 import com.Bankcol.BankColApp.dto.ClienteDTO;
 import com.Bankcol.BankColApp.repository.ClienteRepository;
 import com.Bankcol.BankColApp.service.ClienteService;
@@ -29,10 +30,9 @@ public class ClienteController {
 
 
     //Obtener todos los clientes
-    @GetMapping("/obtenerTodos")
-    public List<Cliente> obtenerTodos() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        return clientes;
+    @GetMapping("/buscarTodos")
+    public ResponseEntity<List<CdtDTO>> buscarTodos() {
+        return new ResponseEntity<>(clienteService.buscarTodos(), HttpStatus.OK);
     }
 
     //Guardar cliente

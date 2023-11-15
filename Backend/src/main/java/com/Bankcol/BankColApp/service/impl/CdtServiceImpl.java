@@ -35,19 +35,19 @@ public class CdtServiceImpl implements CdtService {
         if (cdtDTO == null) {
             throw new Exception("EL cdt no puede ser nulo");
         }
-        if (cdtDTO.getFecha_inicio() == null) {
+        if (cdtDTO.getFecha_inicio() == null || cdtDTO.getFecha_inicio().toString().trim().isEmpty()){
             throw new Exception("Fecha de inicio nula");
         }
-        if (cdtDTO.getFecha_fin() == null) {
+        if (cdtDTO.getFecha_fin() == null || cdtDTO.getFecha_fin().toString().trim().isEmpty()){
             throw new Exception("Fecha de fin nula");
         }
-        if (cdtDTO.getTasa() == null) {
+        if (cdtDTO.getTasa() == null || cdtDTO.getTasa() == 0) {
             throw new Exception("Tasa vacía");
         }
-        if (cdtDTO.getMonto_invertido() == null) {
+        if (cdtDTO.getMonto_invertido() == null || cdtDTO.getMonto_invertido() == 0) {
             throw new Exception("Monto invertido vacío");
         }
-        if (cdtDTO.getMonto_final() == null) {
+        if (cdtDTO.getMonto_final() == null || cdtDTO.getMonto_final() == 0 || cdtDTO.getMonto_final() < cdtDTO.getMonto_invertido()) {
             throw new Exception("Monto final vacío");
         }
         if (cdtDTO.getClienteId() == null || cdtDTO.getClienteId() == 0) {
@@ -81,8 +81,6 @@ public class CdtServiceImpl implements CdtService {
         cdt.setEstadoCdt(estadoCdtOptional.get());
 
         cdt = cdtRepository.save(cdt);
-
-
 
         return CdtMapper.domainToDto(cdt);
     }

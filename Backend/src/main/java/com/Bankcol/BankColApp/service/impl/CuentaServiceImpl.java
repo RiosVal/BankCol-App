@@ -1,7 +1,10 @@
 package com.Bankcol.BankColApp.service.impl;
 
 
+import com.Bankcol.BankColApp.domain.Cliente;
 import com.Bankcol.BankColApp.domain.Cuenta;
+import com.Bankcol.BankColApp.domain.Sucursal;
+import com.Bankcol.BankColApp.domain.TipoCuenta;
 import com.Bankcol.BankColApp.dto.CuentaDTO;
 import com.Bankcol.BankColApp.mapper.CuentaMapper;
 import com.Bankcol.BankColApp.repository.ClienteRepository;
@@ -12,6 +15,7 @@ import com.Bankcol.BankColApp.service.CuentaService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CuentaServiceImpl  implements CuentaService {
@@ -22,6 +26,7 @@ public class CuentaServiceImpl  implements CuentaService {
     private final SucursalRepository sucursalRepository;
 
     public CuentaServiceImpl(CuentaRepository cuentaRepository, TipoCuentaRepository tipoCuentaRepository, ClienteRepository clienteRepository, SucursalRepository sucursalRepository) {
+
         this.cuentaRepository = cuentaRepository;
         this.tipoCuentaRepository = tipoCuentaRepository;
         this.clienteRepository = clienteRepository;
@@ -49,11 +54,31 @@ public class CuentaServiceImpl  implements CuentaService {
             throw new Exception("La sucursal no puede ser nula o vacía");
         }
 
-        Cuenta cuenta = CuentaMapper.dtoToDomain(cuentaDTO);
-        cuenta = cuentaRepository.save(cuenta);
-        cuentaDTO = CuentaMapper.domainToDto(cuenta);
+        //Se verifica que el tipo de cuenta exista
+        Optional <TipoCuenta> tipoCuentaOptional = tipoCuentaRepository.findById(cuentaDTO.getTipoCuentaId());
+        if (tipoCuentaOptional.isEmpty()) {
+            throw new Exception("No se puede registrar la cuenta puesto que no existe un tipo de cuenta con el ID " + cuentaDTO.getTipoCuentaId());
+        }
 
-        return cuentaDTO;
+        //Se verifica que el cliente exista
+        Optional <Cliente> clienteOptional = clienteRepository.findById(cuentaDTO.getClienteId());
+        if (clienteOptional.isEmpty()) {
+            throw new Exception("No se puede registrar la cuenta puesto que no existe un cliente con el ID " + cuentaDTO.getClienteId());
+        }
+
+        //Se verifica que la sucursal exista
+        Optional <Sucursal> sucursalOptional = sucursalRepository.findById(cuentaDTO.getSucursalId());
+        if (sucursalOptional.isEmpty()) {
+            throw new Exception("No se puede registrar la cuenta puesto que no existe una sucursal con el ID " + cuentaDTO.getSucursalId());
+        }
+
+        Cuenta cuenta = CuentaMapper.dtoToDomain(cuentaDTO);
+        cuenta.setTipoCuenta(tipoCuentaOptional.get());
+        cuenta.setCliente(clienteOptional.get());
+        cuenta.setSucursal(sucursalOptional.get());
+        cuenta = cuentaRepository.save(cuenta);
+
+        return CuentaMapper.domainToDto(cuenta);
     }
 
 

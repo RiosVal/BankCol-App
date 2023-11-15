@@ -33,10 +33,6 @@ public class TipoCuentaImpl implements TipoCuentaService {
 
         tipoCuenta = tipoCuentaRepository.save(tipoCuenta);
 
-
-        //3. Retornar el tipo de cuenta mappeado en DTO
-        tipoCuentaDTO = TipoCuentaMapper.domainToDto(tipoCuenta);
-
-        return tipoCuentaDTO;
+        return TipoCuentaMapper.domainToDto(tipoCuenta);
     }
 }
