@@ -9,8 +9,9 @@ import com.Bankcol.BankColApp.repository.RetiroRepository;
 
 import com.Bankcol.BankColApp.service.RetiroService;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class RetiroServiceImpl implements RetiroService {
@@ -21,6 +22,13 @@ public class RetiroServiceImpl implements RetiroService {
     public RetiroServiceImpl(RetiroRepository retiroRepository, CuentaRepository cuentaRepository) {
         this.retiroRepository = retiroRepository;
         this.cuentaRepository = cuentaRepository;
+
+    }
+
+    @Override
+    public List<RetiroDTO> buscarTodos() {
+        return RetiroMapper.domainToDtoList(retiroRepository.findAll());
+
     }
 
     @Override

@@ -23,6 +23,10 @@ public class TransaccionMapper {
                 .fecha(transaccion.getFecha())
                 .monto(transaccion.getMonto())
                 .descripcion(transaccion.getDescripcion())
+                .cuentaId((transaccion.getCuenta() == null) ?
+                        null : transaccion.getCuenta().getId())
+                .destinatarioId((transaccion.getDestinatario() == null) ?
+                        null : transaccion.getDestinatario().getId())
                 .build();
     }
     public static List<Transaccion> dtoToDomainList(List<TransaccionDTO> transaccionDTOS) {

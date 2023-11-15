@@ -27,6 +27,7 @@ public class CdtController {
     public ResponseEntity<List<CdtDTO>> buscarTodos() {
         return new ResponseEntity<>(cdtService.buscarTodos(), HttpStatus.OK);
     }
+
     //Guardar CDT
     @PostMapping("/guardar")
     public ResponseEntity<CdtDTO> guardarCdt(@RequestBody CdtDTO cdtDTO) throws Exception {
@@ -54,9 +55,9 @@ public class CdtController {
     }
 
     //editar cdt
-    @GetMapping("/cdt/editar")
-    public Cdt editar(@PathVariable("id") Long id, Cdt cdt) {
-        Optional<Cdt> cdt1 = cdtRepository.findById(Math.toIntExact(id));
+    /*@PutMapping("/cdt/editar")
+    public Cdt editar(@RequestBody CdtDTO cdtDTO) {
+        Optional<Cdt> cdt1 = cdtRepository.findById(Math.toIntExact(cdtDTO.getId()));
         if (cdt1.isPresent()) {
             Cdt cdt2 = cdt1.get();
             cdt2.setFecha_inicio(cdt.getFecha_inicio());
@@ -72,7 +73,7 @@ public class CdtController {
         }else {
             return null;
         }
-    }
+    }*/
 
 
 }

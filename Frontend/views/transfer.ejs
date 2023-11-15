@@ -1,0 +1,78 @@
+<%- include("partials/head.ejs") %>
+<link rel="stylesheet" href="/styles/transfer.css">
+<link rel="stylesheet" href="/styles/styles.css">
+<title>Transferir</title>
+<body>
+    <section id="transferSection">
+        <%- include("partials/navbar.ejs") %>
+        
+        <div id="transferModuleContainer">
+            <div id="createAddressee">
+                <h3 class="createAddrTitle">Crear destinatario</h3>
+                <form action="/saveAddressee" method="post">
+                    <div class="inputGroup">
+                        <label for="">Nombre</label>
+                        <input name="addresseeName" type="text" required>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="">Cédula</label>
+                        <input name="addresseeId" type="text" required>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="">Banco</label>
+                        <select name="addresseeBank" id="selectBanco">
+                            <option value="BBVA">BBVA</option>
+                            <option value="Colpatria">Colpatria</option>
+                            <option value="Bancolombia">Bancolombia</option>
+                            <option value="Davivienda">Davivienda</option>
+                        </select>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="">Número de cuenta</label>
+                        <input name="addresseeAccNumber" type="text" required>
+                    </div>
+                    <input class="saveInfo" type="submit" value="Guardar">
+                </form>
+
+            </div>
+
+            <div id="sendTransfer">
+                <form action="/transfer" method="post">
+                    <h3></h3>
+                    <div class="inputGroup">
+                        <label id="firstLabel">¿Qué tipo de transferencia?</label>
+                        <select name="transferType" id="transferType">
+                            <option value="Transferencia">Transferencia</option>
+                            <option value="Pago en línea">Pago en línea</option>
+                        </select>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="" id="secondLabel">¿A quién vas a transferir?</label>
+                        <select name="addresseeId" id="addressee">
+                            <% data.addresses.forEach(addresse => { %>
+                             <option value="<%= addresse.id %>"><%= addresse.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="inputGroup">
+                        <label id="secondLabel">¿De donde vas a transferir?</label>
+                        <select name="accountToUse" id="accountToUse">
+                            <% data.products.forEach(product => { %>
+                                <% if (product.type != 'Cdt') { %>
+                                    <option value="<%= product.id %>"><%= product.type %>: <%= product.id %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="inputGroup transferAmount">
+                        <label for="">¿Cuánto vas a transferir?</label>
+                        <input name="amount" type="number">
+                    </div>
+                    <input type="submit" class="saveInfo" value="Transferir">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+</body>

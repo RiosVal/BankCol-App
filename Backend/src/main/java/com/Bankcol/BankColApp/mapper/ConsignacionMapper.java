@@ -19,6 +19,8 @@ public class ConsignacionMapper {
                 .id(consignacion.getId())
                 .fecha(consignacion.getFecha())
                 .monto(consignacion.getMonto())
+                .clienteId((consignacion.getCliente() == null) ?
+                        null : consignacion.getCliente().getId())
                 .build();
     }
     public static List<Consignacion> dtoToDomainList(List<ConsignacionDTO> consignacionDTOS) {

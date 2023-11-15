@@ -18,6 +18,7 @@ public class ConsignacionServiceImpl implements ConsignacionService {
     private final ConsignacionRepository consignacionRepository;
     private final ClienteRepository clienteRepository;
 
+
     public ConsignacionServiceImpl(ConsignacionRepository consignacionRepository, ClienteRepository clienteRepository){
         this.consignacionRepository = consignacionRepository;
         this.clienteRepository = clienteRepository;
@@ -53,6 +54,6 @@ public class ConsignacionServiceImpl implements ConsignacionService {
 
     @Override
     public List<ConsignacionDTO> buscarTodos() {
-        return null;
+        return ConsignacionMapper.domainToDtoList(consignacionRepository.findAll());
     }
 }

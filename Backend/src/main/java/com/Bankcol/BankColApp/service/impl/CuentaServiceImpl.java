@@ -7,10 +7,10 @@ import com.Bankcol.BankColApp.domain.Sucursal;
 import com.Bankcol.BankColApp.domain.TipoCuenta;
 import com.Bankcol.BankColApp.dto.CuentaDTO;
 import com.Bankcol.BankColApp.mapper.CuentaMapper;
-import com.Bankcol.BankColApp.repository.CuentaRepository;
-import com.Bankcol.BankColApp.repository.TipoCuentaRepository;
 import com.Bankcol.BankColApp.repository.ClienteRepository;
+import com.Bankcol.BankColApp.repository.CuentaRepository;
 import com.Bankcol.BankColApp.repository.SucursalRepository;
+import com.Bankcol.BankColApp.repository.TipoCuentaRepository;
 import com.Bankcol.BankColApp.service.CuentaService;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +24,7 @@ public class CuentaServiceImpl  implements CuentaService {
     private final TipoCuentaRepository tipoCuentaRepository;
     private final ClienteRepository clienteRepository;
     private final SucursalRepository sucursalRepository;
+
     public CuentaServiceImpl(CuentaRepository cuentaRepository, TipoCuentaRepository tipoCuentaRepository, ClienteRepository clienteRepository, SucursalRepository sucursalRepository) {
 
         this.cuentaRepository = cuentaRepository;
@@ -83,6 +84,6 @@ public class CuentaServiceImpl  implements CuentaService {
 
     @Override
     public List<CuentaDTO> buscarTodos() {
-        return null;
+        return CuentaMapper.domainToDtoList(cuentaRepository.findAll());
     }
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import WelcomeName from "./welcomeName/WelcomeName";
 import Menu from "./menu/Menu";
 import ProductsPage from "./productsFolder/ProductsPage";
+import Transfers from "./transfersFolder/Transfers";
+import OpenCdtPage from "./openCdtFolder/OpenCdtPage";
 import "./MainPage.css";
 
 
@@ -54,8 +56,8 @@ function MainPage() {
                         clickThirdHandler = {clickThirdHandler}
                     />
                     {isFirstClicked && <ProductsPage />}
-                    {isSecondClicked && <h1>Tranferencias</h1>}
-                    {isThirdClicked && <h1>Abrir cdts</h1>}
+                    {isSecondClicked && <Transfers />}
+                    {isThirdClicked && <OpenCdtPage />}
                 </div>
             </div>
         </div>
