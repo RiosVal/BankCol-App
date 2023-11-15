@@ -1,6 +1,5 @@
 package com.Bankcol.BankColApp.controller;
 
-import com.Bankcol.BankColApp.domain.Cliente;
 import com.Bankcol.BankColApp.domain.Consignacion;
 import com.Bankcol.BankColApp.dto.ConsignacionDTO;
 import com.Bankcol.BankColApp.repository.ConsignacionRepository;
